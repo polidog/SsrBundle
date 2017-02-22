@@ -39,5 +39,39 @@ polidog_ssr:
     bundle_src_path: "%kernel.root_dir%/../web/js"
 ```
 
+Controller Annotation.
 
+```php
+// src/AppBundle/Controller/DefaultController.php
+
+<?php
+
+namespace AppBundle\Controller;
+
+use Polidog\SsrBundle\Annotations\Ssr;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class DefaultController extends Controller
+{
+    /**
+     * @Route("/", name="homepage")
+     * @Ssr(
+     *     app="index_ssr",
+     *     state={"hello"},
+     *     metas={"title"}
+     * )
+     */
+    public function indexAction()
+    {
+        return [
+            'hello' => [
+                'name' => 'polidog',
+            ],
+            'title' => 'polidog lab'
+        ];
+    }
+}
+
+```
 
