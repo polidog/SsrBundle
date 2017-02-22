@@ -1,0 +1,21 @@
+services:
+    polidog_ssr.event_listener.template_listener:
+        class: Polidog\SsrBundle\EventListener\SsrRenderSubscriber
+        arguments:
+            - "@polidog_ssr.render.ssr_render"
+        tags:
+            - { name: kernel.event_subscriber }
+
+    polidog_ssr.baracore:
+        class: Koriym\Baracoa\Baracoa
+        arguments:
+            - "%polidog_ssr.bundle_src_path%"
+            - "@polidog_ssr.baracore.exception_handler"
+
+    polidog_ssr.baracore.exception_handler:
+        class: Koriym\Baracoa\ExceptionHandler
+
+    polidog_ssr.render.ssr_render:
+        class: Polidog\SsrBundle\Render\SsrRender
+        arguments:
+            - "@polidog_ssr.baracore"

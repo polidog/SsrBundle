@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false" colors="true">
+    <testsuites>
+        <testsuite name="PolidogSsrBundle Test Suite">
+            <directory>./src/Tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./</directory>
+            <exclude>
+                <directory>./src/Resources/</directory>
+                <directory>./vendor/</directory>
+                <directory>./src/Tests/</directory>
+                <directory>./src/DependencyInjection/</directory>
+                <file>./src/PolidogSsrBundle.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
