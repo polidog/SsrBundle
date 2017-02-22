@@ -17,14 +17,6 @@ use Prophecy\Argument;
 class SsrRenderTest extends TestCase
 {
 
-    /**
-     * @test
-     *
-     * @param $app
-     * @param array $meta
-     * @param array $state
-     * @param $parameters
-     */
     public function testRender()
     {
         $app = 'index_ssr';
