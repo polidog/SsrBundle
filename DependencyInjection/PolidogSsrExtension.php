@@ -24,7 +24,7 @@ class PolidogSsrExtension extends Extension
 
         $container->setParameter('polidog_ssr.bundle_src_path', $config['bundle_src_path']);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
     }
 }
