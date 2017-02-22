@@ -23,6 +23,8 @@ class PolidogSsrExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('polidog_ssr.bundle_src_path', $config['bundle_src_path']);
+        $container->setParameter('polidog_ssr.baracoa.object', $config['baracoa']['object']);
+        $container->setParameter('polidog_ssr.baracoa.cache_object', $config['baracoa']['cache_object']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');

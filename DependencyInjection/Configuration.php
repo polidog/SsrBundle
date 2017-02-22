@@ -23,6 +23,14 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('bundle_src_path')->isRequired()->end()
+                ->scalarNode('cache')->defaultFalse()->end()
+                ->arrayNode('baracoa')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('object')->defaultValue('polidog_ssr.baracore')->isRequired()->end()
+                        ->scalarNode('cache_object')->defaultValue('polidog_ssr.cache_baracore')->isRequired()->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 

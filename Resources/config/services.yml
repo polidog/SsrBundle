@@ -6,11 +6,24 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
+    polidog_ssr.cache.apcu_cache:
+        class: ApcuCache
+        arguments:
+            - "polidog_ssr_cache"
+
     polidog_ssr.baracore:
         class: Koriym\Baracoa\Baracoa
         arguments:
             - "%polidog_ssr.bundle_src_path%"
             - "@polidog_ssr.baracore.exception_handler"
+            - "@polidog_ssr.cache.apcu_cache"
+
+    polidog_ssr.cache_baracore:
+        class: Koriym\Baracoa\CacheBaracoa
+        arguments:
+            - "%polidog_ssr.bundle_src_path%"
+            - "@polidog_ssr.baracore.exception_handler"
+            - "@polidog_ssr.cache.apcu_cache"
 
     polidog_ssr.baracore.exception_handler:
         class: Koriym\Baracoa\ExceptionHandler
@@ -18,4 +31,9 @@ services:
     polidog_ssr.render.ssr_render:
         class: Polidog\SsrBundle\Render\SsrRender
         arguments:
-            - "@polidog_ssr.baracore"
+            - "@@'%polidog_ssr.baracoa.object%'"
+
+    polidog_ssr.render.cache_ssr_render:
+        class: Polidog\SsrBundle\Render\SsrRender
+        arguments:
+            - "@@'%polidog_ssr.baracoa.cache_object%'"

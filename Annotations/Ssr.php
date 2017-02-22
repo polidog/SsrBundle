@@ -30,6 +30,8 @@ final class Ssr extends ConfigurationAnnotation
      */
     private $metas = [];
 
+    private $cache = false;
+
     /**
      * @return string
      */
@@ -83,6 +85,26 @@ final class Ssr extends ConfigurationAnnotation
         $this->metas = $metas;
         return $this;
     }
+
+    /**
+     * @return bool
+     */
+    public function isCache(): bool
+    {
+        return $this->cache;
+    }
+
+    /**
+     * @param bool $cache
+     * @return $this
+     */
+    public function setCache($cache)
+    {
+        $this->cache = $cache;
+        return $this;
+    }
+
+
 
     public function getAliasName()
     {

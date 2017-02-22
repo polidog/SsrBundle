@@ -23,12 +23,19 @@ class SsrRenderSubscriber implements EventSubscriberInterface
     protected $ssrRender;
 
     /**
-     * SsrListener constructor.
-     * @param SsrRenderInterface $ssrRender
+     * @var SsrRenderInterface
      */
-    public function __construct(SsrRenderInterface $ssrRender)
+    protected $cacheSsrRender;
+
+    /**
+     * SsrRenderSubscriber constructor.
+     * @param SsrRenderInterface $ssrRender
+     * @param SsrRenderInterface $cacheSsrRender
+     */
+    public function __construct(SsrRenderInterface $ssrRender, SsrRenderInterface $cacheSsrRender)
     {
         $this->ssrRender = $ssrRender;
+        $this->cacheSsrRender = $cacheSsrRender;
     }
 
 
@@ -39,7 +46,12 @@ class SsrRenderSubscriber implements EventSubscriberInterface
 
         /** @var Ssr $ssr */
         $ssr = $request->attributes->get('_ssr');
-        $content = $this->ssrRender->render($ssr, $event->getControllerResult());
+        if ($ssr->isCache()) {
+            $content = $this->cacheSsrRender->render($ssr, $event->getControllerResult());
+        } else {
+            $content = $this->ssrRender->render($ssr, $event->getControllerResult());
+        }
+
         if (null === $response) {
             $response = new Response();
         }
