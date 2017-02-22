@@ -7,7 +7,7 @@ services:
             - { name: kernel.event_subscriber }
 
     polidog_ssr.cache.apcu_cache:
-        class: ApcuCache
+        class: Polidog\SsrBundle\Cache\ApcuCache
         arguments:
             - "polidog_ssr_cache"
 

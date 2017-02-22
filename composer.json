@@ -12,7 +12,7 @@
         "koriym/baracoa": "1.x-dev",
         "symfony/framework-bundle": "~2.7|~3.0",
         "sensio/framework-extra-bundle": "~2.7|~3.0",
-        "symfony/cache": "3.3.x-dev"
+        "sabre/cache": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0"

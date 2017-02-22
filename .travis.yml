@@ -11,4 +11,4 @@ before_script:
   - composer global require hirak/prestissimo
   - composer install --prefer-source
 script:
-  - ./vender/bin/phpunit
+  - phpunit
