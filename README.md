@@ -1,6 +1,7 @@
 # PolidogSsrBundle
 
-JavaScript server side rendering (SSR) bundle for Symfony.
+JavaScript server side rendering (SSR) bundle for Symfony.  
+Inspected by [bearsunday/BEAR.SsrModule](https://github.com/bearsunday/BEAR.SsrModule)
 
 ## Prerequisites
 - php7.1
