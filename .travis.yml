@@ -9,6 +9,6 @@ cache:
 before_script:
   - composer self-update
   - composer global require hirak/prestissimo
-  - composer install --prefer-source
+  - composer install
 script:
-  - phpunit
+  - ./vender/bin/phpunit
