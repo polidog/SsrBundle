@@ -11,7 +11,8 @@ Inspected by [bearsunday/BEAR.SsrModule](https://github.com/bearsunday/BEAR.SsrM
 
 
 ```
-$ composer require polidog/ssr-bundle
+$ composer require koriym/baracoa "1.x-dev"
+$ composer require polidog/ssr-bundle "dev-master"
 ```
 
 ## Usage

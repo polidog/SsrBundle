@@ -3,6 +3,7 @@ services:
         class: Polidog\SsrBundle\EventListener\SsrRenderSubscriber
         arguments:
             - "@polidog_ssr.render.ssr_render"
+            - "@polidog_ssr.render.cache_ssr_render"
         tags:
             - { name: kernel.event_subscriber }
 
@@ -16,7 +17,6 @@ services:
         arguments:
             - "%polidog_ssr.bundle_src_path%"
             - "@polidog_ssr.baracore.exception_handler"
-            - "@polidog_ssr.cache.apcu_cache"
 
     polidog_ssr.cache_baracore:
         class: Koriym\Baracoa\CacheBaracoa
@@ -31,9 +31,9 @@ services:
     polidog_ssr.render.ssr_render:
         class: Polidog\SsrBundle\Render\SsrRender
         arguments:
-            - "@@'%polidog_ssr.baracoa.object%'"
+            - "@=container.get(parameter('polidog_ssr.baracoa.object'))"
 
     polidog_ssr.render.cache_ssr_render:
         class: Polidog\SsrBundle\Render\SsrRender
         arguments:
-            - "@@'%polidog_ssr.baracoa.cache_object%'"
+            - "@=container.get(parameter('polidog_ssr.baracoa.cache_object'))"
