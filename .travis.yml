@@ -1,14 +1,17 @@
 language: php
 php:
+  - 5.6
+  - 7.0
   - 7.1
-  - hhvm
 sudo: false
 cache:
   directories:
     - $HOME/.composer/cache
+    - vendor
+
 before_script:
   - composer self-update
   - composer global require hirak/prestissimo
-  - composer install
+  - composer install --no-interaction
 script:
-  - vender/bin/phpunit
+  - ./vendor/bin/phpunit
