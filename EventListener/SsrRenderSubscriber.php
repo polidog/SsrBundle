@@ -2,11 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: polidog
- * Date: 2017/02/21
+ * Date: 2017/02/21.
  */
 
 namespace Polidog\SsrBundle\EventListener;
-
 
 use Polidog\SsrBundle\Annotations\Ssr;
 use Polidog\SsrBundle\Render\SsrRenderInterface;
@@ -29,6 +28,7 @@ class SsrRenderSubscriber implements EventSubscriberInterface
 
     /**
      * SsrRenderSubscriber constructor.
+     *
      * @param SsrRenderInterface $ssrRender
      * @param SsrRenderInterface $cacheSsrRender
      */
@@ -37,7 +37,6 @@ class SsrRenderSubscriber implements EventSubscriberInterface
         $this->ssrRender = $ssrRender;
         $this->cacheSsrRender = $cacheSsrRender;
     }
-
 
     public function onKernelView(GetResponseForControllerResultEvent $event)
     {
@@ -61,11 +60,8 @@ class SsrRenderSubscriber implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return [
+        return array(
             KernelEvents::VIEW => 'onKernelView',
-        ];
+        );
     }
-
-
-
 }

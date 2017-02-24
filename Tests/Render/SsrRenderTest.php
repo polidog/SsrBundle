@@ -2,11 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: polidog
- * Date: 2017/02/22
+ * Date: 2017/02/22.
  */
 
 namespace Polidog\SsrBundle\Tests\Render;
-
 
 use Koriym\Baracoa\BaracoaInterface;
 use PHPUnit\Framework\TestCase;
@@ -16,25 +15,24 @@ use Prophecy\Argument;
 
 class SsrRenderTest extends TestCase
 {
-
     public function testRender()
     {
         $app = 'index_ssr';
-        $meta = ['title'];
-        $state = ['hello'];
+        $meta = array('title');
+        $state = array('hello');
 
-        $parameters = [
+        $parameters = array(
             'title' => 'hogehoge',
-            'hello' => [
-                'name' => 'polidog'
-            ]
-        ];
+            'hello' => array(
+                'name' => 'polidog',
+            ),
+        );
 
         $baracoa = $this->prophesize(BaracoaInterface::class);
-        $baracoa->render(Argument::any(),Argument::any(),Argument::any())
-            ->willReturn("string");
+        $baracoa->render(Argument::any(), Argument::any(), Argument::any())
+            ->willReturn('string');
 
-        $ssr = new Ssr([]);
+        $ssr = new Ssr(array());
         $ssr->setApp($app);
         $ssr->setMetas($meta);
         $ssr->setState($state);
@@ -42,12 +40,10 @@ class SsrRenderTest extends TestCase
         $ssrRender = new SsrRender($baracoa->reveal());
         $ssrRender->render($ssr, $parameters);
 
-
-
         $baracoa->render(
             $ssr->getApp(),
-            ['hello' => ['name' => 'polidog']],
-            ['title' => 'hogehoge']
+            array('hello' => array('name' => 'polidog')),
+            array('title' => 'hogehoge')
         )->shouldHaveBeenCalled();
     }
 }

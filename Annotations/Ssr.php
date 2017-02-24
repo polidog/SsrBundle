@@ -2,13 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: polidog
- * Date: 2017/02/19
+ * Date: 2017/02/19.
  */
 
 namespace Polidog\SsrBundle\Annotations;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationAnnotation;
-
 
 /**
  * @Annotation
@@ -23,12 +22,12 @@ final class Ssr extends ConfigurationAnnotation
     /**
      * @var array
      */
-    private $state = ['*'];
+    private $state = array('*');
 
     /**
      * @var array
      */
-    private $metas = [];
+    private $metas = array();
 
     private $cache = false;
 
@@ -42,11 +41,13 @@ final class Ssr extends ConfigurationAnnotation
 
     /**
      * @param string $app
+     *
      * @return $this
      */
     public function setApp($app)
     {
         $this->app = $app;
+
         return $this;
     }
 
@@ -60,11 +61,13 @@ final class Ssr extends ConfigurationAnnotation
 
     /**
      * @param array $state
+     *
      * @return $this
      */
     public function setState($state)
     {
         $this->state = $state;
+
         return $this;
     }
 
@@ -78,11 +81,13 @@ final class Ssr extends ConfigurationAnnotation
 
     /**
      * @param array $metas
+     *
      * @return $this
      */
     public function setMetas($metas)
     {
         $this->metas = $metas;
+
         return $this;
     }
 
@@ -96,15 +101,15 @@ final class Ssr extends ConfigurationAnnotation
 
     /**
      * @param bool $cache
+     *
      * @return $this
      */
     public function setCache($cache)
     {
         $this->cache = $cache;
+
         return $this;
     }
-
-
 
     public function getAliasName()
     {
@@ -115,6 +120,4 @@ final class Ssr extends ConfigurationAnnotation
     {
         return false;
     }
-
-
 }

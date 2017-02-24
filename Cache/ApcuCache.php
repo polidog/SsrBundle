@@ -2,11 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: polidog
- * Date: 2017/02/23
+ * Date: 2017/02/23.
  */
 
 namespace Polidog\SsrBundle\Cache;
-
 
 use Psr\SimpleCache\CacheInterface;
 use Sabre\Cache\Apcu;
@@ -25,6 +24,7 @@ class ApcuCache implements CacheInterface
 
     /**
      * ApcuCache constructor.
+     *
      * @param string $namespace
      */
     public function __construct($namespace, Apcu $apcu = null)
@@ -35,7 +35,6 @@ class ApcuCache implements CacheInterface
         }
         $this->apcu = $apcu;
     }
-
 
     public function get($key, $default = null)
     {
@@ -80,15 +79,16 @@ class ApcuCache implements CacheInterface
 
     private function getKey($key)
     {
-        return $this->namespace . '_' . $key;
+        return $this->namespace.'_'.$key;
     }
 
     private function getMultipleKeys($keys)
     {
-        $_keys = [];
+        $_keys = array();
         foreach ($keys as $key) {
             $_keys[] = $this->get($key);
         }
+
         return $_keys;
     }
 
@@ -98,7 +98,4 @@ class ApcuCache implements CacheInterface
             yield $this->getKey($key) => $value;
         }
     }
-
-
-
 }

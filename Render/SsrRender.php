@@ -2,11 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: polidog
- * Date: 2017/02/22
+ * Date: 2017/02/22.
  */
 
 namespace Polidog\SsrBundle\Render;
-
 
 use Koriym\Baracoa\BaracoaInterface;
 use Polidog\SsrBundle\Annotations\Ssr;
@@ -20,6 +19,7 @@ class SsrRender implements SsrRenderInterface
 
     /**
      * SsrRender constructor.
+     *
      * @param BaracoaInterface $baracoa
      */
     public function __construct(BaracoaInterface $baracoa)
@@ -39,9 +39,9 @@ class SsrRender implements SsrRenderInterface
         );
     }
 
-    private function filter(array $keys , array $parameters)
+    private function filter(array $keys, array $parameters)
     {
-        if ($keys === ['*']) {
+        if ($keys === array('*')) {
             return $parameters;
         }
 

@@ -1,3 +1,13 @@
 .idea
-/vendor/
+.buildpath
+.DS_Store
+.project
+.settings/
+.*.sw*
+.*.un~
+.env
+build/
+nbproject
+vendor
 composer.lock
+.php_cs.cache
