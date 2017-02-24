@@ -41,7 +41,7 @@ class SsrRender implements SsrRenderInterface
 
     private function filter(array $keys, array $parameters)
     {
-        if ($keys === array('*')) {
+        if ($keys === ['*']) {
             return $parameters;
         }
 

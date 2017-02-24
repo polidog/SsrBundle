@@ -22,12 +22,12 @@ final class Ssr extends ConfigurationAnnotation
     /**
      * @var array
      */
-    private $state = array('*');
+    private $state = ['*'];
 
     /**
      * @var array
      */
-    private $metas = array();
+    private $metas = [];
 
     private $cache = false;
 

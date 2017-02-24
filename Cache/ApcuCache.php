@@ -84,7 +84,7 @@ class ApcuCache implements CacheInterface
 
     private function getMultipleKeys($keys)
     {
-        $_keys = array();
+        $_keys = [];
         foreach ($keys as $key) {
             $_keys[] = $this->get($key);
         }

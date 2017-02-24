@@ -18,21 +18,21 @@ class SsrRenderTest extends TestCase
     public function testRender()
     {
         $app = 'index_ssr';
-        $meta = array('title');
-        $state = array('hello');
+        $meta = ['title'];
+        $state = ['hello'];
 
-        $parameters = array(
+        $parameters = [
             'title' => 'hogehoge',
-            'hello' => array(
+            'hello' => [
                 'name' => 'polidog',
-            ),
-        );
+            ],
+        ];
 
         $baracoa = $this->prophesize(BaracoaInterface::class);
         $baracoa->render(Argument::any(), Argument::any(), Argument::any())
             ->willReturn('string');
 
-        $ssr = new Ssr(array());
+        $ssr = new Ssr([]);
         $ssr->setApp($app);
         $ssr->setMetas($meta);
         $ssr->setState($state);
@@ -42,8 +42,8 @@ class SsrRenderTest extends TestCase
 
         $baracoa->render(
             $ssr->getApp(),
-            array('hello' => array('name' => 'polidog')),
-            array('title' => 'hogehoge')
+            ['hello' => ['name' => 'polidog']],
+            ['title' => 'hogehoge']
         )->shouldHaveBeenCalled();
     }
 }
