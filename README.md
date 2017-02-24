@@ -1,6 +1,7 @@
 # PolidogSsrBundle
 
 [![Build Status](https://travis-ci.org/polidog/SsrBundle.svg?branch=master)](https://travis-ci.org/polidog/SsrBundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/polidog/SsrBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/polidog/SsrBundle/?branch=master)
 
 JavaScript server side rendering (SSR) bundle for Symfony.  
 Inspected by [bearsunday/BEAR.SsrModule](https://github.com/bearsunday/BEAR.SsrModule)
