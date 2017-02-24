@@ -6,6 +6,13 @@
         </testsuite>
     </testsuites>
 
+    <logging>
+        <log type="coverage-html" target="build/coverage"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+    </logging>
+
+
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./</directory>
@@ -13,7 +20,6 @@
                 <directory>./Resources/</directory>
                 <directory>./vendor/</directory>
                 <directory>./Tests/</directory>
-                <directory>./DependencyInjection/</directory>
                 <file>./PolidogSsrBundle.php</file>
             </exclude>
         </whitelist>
