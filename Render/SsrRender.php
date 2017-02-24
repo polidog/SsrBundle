@@ -50,7 +50,7 @@ class SsrRender implements SsrRenderInterface
             throw new \LogicException(implode(',', $errorKeys));
         }
 
-        return array_filter((array) $parameters, function ($key) use ($keys) {
+        return array_filter((array) $parameters, function($key) use ($keys) {
             return in_array($key, $keys);
         }, ARRAY_FILTER_USE_KEY);
     }
