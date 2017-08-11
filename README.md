@@ -9,13 +9,12 @@ Inspected by [bearsunday/BEAR.SsrModule](https://github.com/bearsunday/BEAR.SsrM
 ## Prerequisites
 - php7.1
 - V8Js (Optional)
+- Symfony3.3~
 
 ## Installation
 
-
 ```
-$ composer require koriym/baracoa "1.x-dev"
-$ composer require polidog/ssr-bundle "dev-master"
+$ composer require polidog/ssr-bundle "^1.0"
 ```
 
 ## Usage
@@ -79,3 +78,18 @@ class DefaultController extends Controller
 
 ```
 
+### Using CacheBaracoa
+
+Set Annotation cache parameter.
+
+```$xslt
+    /**
+     * @Route("/", name="homepage")
+     * @Ssr(
+     *     app="index_ssr",
+     *     state={"hello"},
+     *     metas={"title"},
+     *     cache=true
+     * )
+     */
+```  
