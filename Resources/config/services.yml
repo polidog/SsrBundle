@@ -6,17 +6,20 @@ services:
             - "@polidog_ssr.render.cache_ssr_render"
         tags:
             - { name: kernel.event_subscriber }
+        private: true
 
     polidog_ssr.simple_cache:
         class: Symfony\Component\Cache\Simple\Psr6Cache
         arguments:
             - "@cache.app"
+        private: true
 
     polidog_ssr.baracore:
         class: Koriym\Baracoa\Baracoa
         arguments:
             - "%polidog_ssr.bundle_src_path%"
             - "@polidog_ssr.baracore.exception_handler"
+        private: true
 
     polidog_ssr.cache_baracore:
         class: Koriym\Baracoa\CacheBaracoa
@@ -24,6 +27,7 @@ services:
             - "%polidog_ssr.bundle_src_path%"
             - "@polidog_ssr.baracore.exception_handler"
             - "@polidog_ssr.simple_cache"
+        private: true
 
     polidog_ssr.baracore.exception_handler:
         class: Koriym\Baracoa\ExceptionHandler
@@ -32,8 +36,10 @@ services:
         class: Polidog\SsrBundle\Render\SsrRender
         arguments:
             - "@=container.get(parameter('polidog_ssr.baracoa.object'))"
+        private: true
 
     polidog_ssr.render.cache_ssr_render:
         class: Polidog\SsrBundle\Render\SsrRender
         arguments:
             - "@=container.get(parameter('polidog_ssr.baracoa.cache_object'))"
+        private: true
