@@ -7,10 +7,10 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
-    polidog_ssr.cache.apcu_cache:
-        class: Polidog\SsrBundle\Cache\ApcuCache
+    polidog_ssr.simple_cache:
+        class: Symfony\Component\Cache\Simple\Psr6Cache
         arguments:
-            - "polidog_ssr_cache"
+            - "@cache.app"
 
     polidog_ssr.baracore:
         class: Koriym\Baracoa\Baracoa
@@ -23,7 +23,7 @@ services:
         arguments:
             - "%polidog_ssr.bundle_src_path%"
             - "@polidog_ssr.baracore.exception_handler"
-            - "@polidog_ssr.cache.apcu_cache"
+            - "@polidog_ssr.simple_cache"
 
     polidog_ssr.baracore.exception_handler:
         class: Koriym\Baracoa\ExceptionHandler
